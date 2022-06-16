@@ -250,7 +250,7 @@
             // ipAuto
             // 
             this.ipAuto.AutoSize = true;
-            this.ipAuto.Location = new System.Drawing.Point(213, 27);
+            this.ipAuto.Location = new System.Drawing.Point(222, 40);
             this.ipAuto.Name = "ipAuto";
             this.ipAuto.Size = new System.Drawing.Size(46, 14);
             this.ipAuto.TabIndex = 20;
@@ -259,7 +259,7 @@
             // masque
             // 
             this.masque.AutoSize = true;
-            this.masque.Location = new System.Drawing.Point(213, 65);
+            this.masque.Location = new System.Drawing.Point(222, 78);
             this.masque.Name = "masque";
             this.masque.Size = new System.Drawing.Size(51, 14);
             this.masque.TabIndex = 23;
@@ -268,7 +268,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(213, 105);
+            this.label12.Location = new System.Drawing.Point(222, 118);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(46, 14);
             this.label12.TabIndex = 25;
@@ -278,68 +278,78 @@
             // sec_Dns
             // 
             this.sec_Dns.AccessibleRole = System.Windows.Forms.AccessibleRole.Text;
+            this.sec_Dns.AutoSize = true;
             this.sec_Dns.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.sec_Dns.BackColor = System.Drawing.SystemColors.Window;
+            this.sec_Dns.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.sec_Dns.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sec_Dns.IPAddress = ((System.Net.IPAddress)(resources.GetObject("sec_Dns.IPAddress")));
-            this.sec_Dns.Location = new System.Drawing.Point(222, 272);
-            this.sec_Dns.Margin = new System.Windows.Forms.Padding(2);
+            this.sec_Dns.Location = new System.Drawing.Point(222, 276);
+            this.sec_Dns.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.sec_Dns.Name = "sec_Dns";
-            this.sec_Dns.Size = new System.Drawing.Size(158, 23);
+            this.sec_Dns.Size = new System.Drawing.Size(137, 19);
             this.sec_Dns.TabIndex = 31;
             // 
             // pri_Dns
             // 
             this.pri_Dns.AccessibleRole = System.Windows.Forms.AccessibleRole.Text;
+            this.pri_Dns.AutoSize = true;
             this.pri_Dns.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.pri_Dns.BackColor = System.Drawing.SystemColors.Window;
+            this.pri_Dns.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pri_Dns.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pri_Dns.IPAddress = ((System.Net.IPAddress)(resources.GetObject("pri_Dns.IPAddress")));
-            this.pri_Dns.Location = new System.Drawing.Point(222, 232);
-            this.pri_Dns.Margin = new System.Windows.Forms.Padding(2);
+            this.pri_Dns.Location = new System.Drawing.Point(222, 236);
+            this.pri_Dns.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pri_Dns.Name = "pri_Dns";
-            this.pri_Dns.Size = new System.Drawing.Size(158, 23);
+            this.pri_Dns.Size = new System.Drawing.Size(137, 19);
             this.pri_Dns.TabIndex = 30;
             this.pri_Dns.Load += new System.EventHandler(this.iPv4AddressTextBox4_Load);
             // 
             // getway
             // 
             this.getway.AccessibleRole = System.Windows.Forms.AccessibleRole.Text;
+            this.getway.AutoSize = true;
             this.getway.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.getway.BackColor = System.Drawing.SystemColors.Window;
+            this.getway.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.getway.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.getway.IPAddress = ((System.Net.IPAddress)(resources.GetObject("getway.IPAddress")));
-            this.getway.Location = new System.Drawing.Point(222, 150);
-            this.getway.Margin = new System.Windows.Forms.Padding(2);
+            this.getway.Location = new System.Drawing.Point(222, 154);
+            this.getway.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.getway.Name = "getway";
-            this.getway.Size = new System.Drawing.Size(158, 23);
+            this.getway.Size = new System.Drawing.Size(137, 19);
             this.getway.TabIndex = 29;
             // 
             // ip_address
             // 
             this.ip_address.AccessibleRole = System.Windows.Forms.AccessibleRole.Text;
+            this.ip_address.AutoSize = true;
             this.ip_address.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ip_address.BackColor = System.Drawing.SystemColors.Window;
+            this.ip_address.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.ip_address.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ip_address.IPAddress = ((System.Net.IPAddress)(resources.GetObject("ip_address.IPAddress")));
-            this.ip_address.Location = new System.Drawing.Point(222, 72);
-            this.ip_address.Margin = new System.Windows.Forms.Padding(2);
+            this.ip_address.Location = new System.Drawing.Point(222, 76);
+            this.ip_address.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ip_address.Name = "ip_address";
-            this.ip_address.Size = new System.Drawing.Size(158, 23);
+            this.ip_address.Size = new System.Drawing.Size(137, 19);
             this.ip_address.TabIndex = 28;
             this.ip_address.Load += new System.EventHandler(this.ip_address_Load);
             // 
             // subnet_mask
             // 
             this.subnet_mask.AccessibleRole = System.Windows.Forms.AccessibleRole.Text;
+            this.subnet_mask.AutoSize = true;
             this.subnet_mask.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.subnet_mask.BackColor = System.Drawing.SystemColors.Window;
+            this.subnet_mask.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.subnet_mask.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.subnet_mask.IPAddress = ((System.Net.IPAddress)(resources.GetObject("subnet_mask.IPAddress")));
-            this.subnet_mask.Location = new System.Drawing.Point(222, 111);
-            this.subnet_mask.Margin = new System.Windows.Forms.Padding(2);
+            this.subnet_mask.Location = new System.Drawing.Point(222, 114);
+            this.subnet_mask.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.subnet_mask.Name = "subnet_mask";
-            this.subnet_mask.Size = new System.Drawing.Size(158, 22);
+            this.subnet_mask.Size = new System.Drawing.Size(137, 19);
             this.subnet_mask.TabIndex = 27;
             // 
             // tabControl1
@@ -407,7 +417,7 @@
             this.tabPage2.Controls.Add(this.label12);
             this.tabPage2.Location = new System.Drawing.Point(4, 23);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Size = new System.Drawing.Size(441, 321);
+            this.tabPage2.Size = new System.Drawing.Size(417, 321);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Votre IP";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -416,7 +426,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(7, 105);
+            this.label9.Location = new System.Drawing.Point(16, 118);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(134, 14);
             this.label9.TabIndex = 28;
@@ -426,7 +436,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(7, 27);
+            this.label11.Location = new System.Drawing.Point(16, 40);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(70, 14);
             this.label11.TabIndex = 26;
@@ -436,7 +446,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(7, 65);
+            this.label10.Location = new System.Drawing.Point(16, 78);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(148, 14);
             this.label10.TabIndex = 27;

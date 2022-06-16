@@ -24,27 +24,34 @@ namespace NetConfigurtor
         public Form1()
         {
             InitializeComponent();
-            WifiInf(out WifiIP, out WifiDns, out WifiName);
             radioButton1.Checked = true;
             checkBox1.Checked = false;
 
-            // si checkbox true afficher ipconfig
-            ManagementObjectSearcher query = new ManagementObjectSearcher("SELECT * FROM Win32_NetworkAdapterConfiguration WHERE IPEnabled = 'TRUE'");
-            ManagementObjectCollection queryCollection = query.Get();
-            foreach (ManagementObject mo in queryCollection)
+            ManagementObjectSearcher NetworkSearcher = new ManagementObjectSearcher("SELECT * FROM Win32_NetworkAdapterConfiguration WHERE IPEnabled = 'TRUE'");
+            ManagementObjectCollection moCollection = NetworkSearcher.Get();
+
+            foreach (ManagementObject mo in moCollection)
             {
-                string[] addresses = (string[])mo["IPAddress"];
+                String[] addresses = (String[])(mo["IPAddress"]);
                 foreach (string ipaddress in addresses)
                 {
-                    ipAuto.Text = ipaddress;
+                    ipAuto.Text = addresses[0];
+
                 }
 
-                string[] subnets = (string[])mo["IPSubnet"];
-                foreach (string subnet in subnets)
+                String[] subnets = (String[])(mo["IPSubnet"]);
+                foreach (string ipsubnet in subnets)
                 {
-                    masque.Text = subnet;
+                    masque.Text = subnets[0];
                 }
 
+                String[] defaultgateways = (String[])mo["DefaultIpGateway"];
+                foreach (var defaultgateway in defaultgateways)
+                {
+                    label12.Text = defaultgateways[0];
+                }
+
+               
             }
 
 
@@ -66,37 +73,7 @@ namespace NetConfigurtor
 
         }
 
-        private static void WifiInf(out string ip, out string dns, out string nic)  // To get current wifi config
-        {
-            ip = "";
-            dns = "";
-            nic = "";
-            foreach (NetworkInterface ni in NetworkInterface.GetAllNetworkInterfaces())
-            {
-                if (ni.NetworkInterfaceType == NetworkInterfaceType.Wireless80211)
-                {
 
-                    foreach (IPAddress dnsAdress in ni.GetIPProperties().DnsAddresses)
-                    {
-                        if (dnsAdress.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
-                        {
-                            dns = dnsAdress.ToString();
-                        }
-                    }
-
-
-                    foreach (UnicastIPAddressInformation ips in ni.GetIPProperties().UnicastAddresses)
-                    {
-                        if (ips.Address.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork && !ips.Address.ToString().StartsWith("169")) //to exclude automatic ips
-                        {
-                            ip = ips.Address.ToString();
-                            nic = ni.Name;
-                        }
-                    }
-                }
-            }
-
-        }
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -395,6 +372,11 @@ namespace NetConfigurtor
 
 
             }
+        }
+
+        private void label20_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
