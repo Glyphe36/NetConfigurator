@@ -1,4 +1,4 @@
-# NetConfigurtor
+# NetConfigurator
 
 Assitance de configuration IP ainsi que pour renommer l'ordinateur.
 
