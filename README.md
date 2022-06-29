@@ -17,5 +17,10 @@ Assitance de configuration IP ainsi que pour renommer l'ordinateur.
 
 # Aide et Support 
 
-- vous avez des bugs a nous remonter href=mailto:jessy.robin@key4events.com 
+- vous avez des bugs a nous remonter <a href="mailto:jessy.robin@key4events.com ">Envoyer un Mail</a>
 - vous voulez nous faire un dons <a href="">Cliquer Ici</a>
+
+# Remerciement
+
+Merci 
+
