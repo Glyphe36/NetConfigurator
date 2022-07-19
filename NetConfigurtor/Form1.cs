@@ -11,15 +11,11 @@ namespace NetConfigurtor
 
     public partial class Form1 : Form
     {
-
-
-        string WifiIP;
-        string WifiDns;
-        string WifiName;
-
         string Dns0 = "";
         string Dns1 = "1.1.1.1";
         string Dns8 = "8.8.8.8";
+       
+        
 
         public Form1()
         {
@@ -50,26 +46,17 @@ namespace NetConfigurtor
                 {
                     label12.Text = defaultgateways[0];
                 }
-
-               
             }
 
-
-            IPGlobalProperties ipProperties = IPGlobalProperties.GetIPGlobalProperties();
-
-            foreach (NetworkInterface networkCard in NetworkInterface.GetAllNetworkInterfaces())
-
+            foreach (NetworkInterface ni in NetworkInterface.GetAllNetworkInterfaces())
             {
-
-                foreach (GatewayIPAddressInformation gatewayAddr in networkCard.GetIPProperties().GatewayAddresses)
-
+                if (ni.NetworkInterfaceType == NetworkInterfaceType.Ethernet)
                 {
-
-                    label12.Text = gatewayAddr.Address.ToString();
-
+                    comboBox2.Items.Add(ni.Name);
+                    Console.WriteLine(ni.Name);
                 }
-
             }
+
 
         }
 
@@ -115,9 +102,11 @@ namespace NetConfigurtor
 
         private void button1_Click(object sender, EventArgs e)
         {
+            string Interface2 = "Ethernet2";
+
             if (radioButton1.Checked == true)
             {
-                SetCMD("/c netsh interface ipv4 set address Ethernet dhcp");
+                SetCMD("/c netsh interface ipv4 set address " + Interface2 + " dhcp");
             }
 
             if (radioButton2.Checked == true)
@@ -127,30 +116,31 @@ namespace NetConfigurtor
                 string wifiDefaultGetway = getway.Text;
 
 
+                string interfacebox = comboBox2.SelectedItem.ToString();
                 string PrimaryDNS = pri_Dns.Text;
                 string SecondDNS = sec_Dns.Text;
 
+                
 
-
-                SetCMD("/c netsh interface ipv4 set address Ethernet static " + IpAddress + " " + Subnet + " " + wifiDefaultGetway + "");
+                SetCMD("/c netsh interface ipv4 set address " + interfacebox + " static " + IpAddress + " " + Subnet + " " + wifiDefaultGetway + "");
 
                 if (checkBox1.Checked == true)
                 {
-                    SetCMD("/c netsh interface ipv4 set dns Ethernet static " + PrimaryDNS + " & netsh interface ipv4 add dns Ethernet " + SecondDNS + " index=2");
+                    SetCMD("/c netsh interface ipv4 set dns " + interfacebox + " static " + PrimaryDNS + " & netsh interface ipv4 add dns " + Interface2 + " " + SecondDNS + " index=2");
                 }
                 if (checkBox1.Checked == false)
                 {
-                    SetCMD("/c netsh interface ipv4 set dns Ethernet dhcp");
+                    SetCMD("/c netsh interface ipv4 set dns " + interfacebox + " dhcp");
                 }
 
             }
 
             string NewName = textBox6.Text;
-            string message = "Vos modification on bien ete pris en compte. Voulez-vous Redemarer ? Annuler pour revenir a l'application.";
+            string message = "Vos modification on bien ete pris en compte. Voulez-vous Redemarer ?";
             string caption = "Information";
 
             var result = MessageBox.Show(message, caption,
-                            MessageBoxButtons.YesNoCancel,
+                            MessageBoxButtons.YesNo,
                             MessageBoxIcon.Information);
             if (result == DialogResult.Yes)
             {
@@ -158,13 +148,13 @@ namespace NetConfigurtor
             }
             if (result == DialogResult.No)
             {
-                this.Close();
-            }
-            if (result == DialogResult.Cancel)
-            {
                 return;
             }
-
+            
+        }
+        private void button4_Click(object sender, EventArgs e)
+        {
+            
         }
 
 
@@ -375,6 +365,50 @@ namespace NetConfigurtor
         }
 
         private void label20_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label16_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabPage2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBoxLanInternet_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Interfacetitle_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label16_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label16_Click_2(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button4_Click_1(object sender, EventArgs e)
+        {
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
