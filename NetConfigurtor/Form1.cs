@@ -41,11 +41,11 @@ namespace NetConfigurtor
                     masque.Text = subnets[0];
                 }
 
-                String[] defaultgateways = (String[])mo["DefaultIpGateway"];
-                foreach (var defaultgateway in defaultgateways)
-                {
-                    label12.Text = defaultgateways[0];
-                }
+                //string[] defaultgateways = (string[])mo["DefaultIPGateway"];
+                //foreach (string defaultipgateway in defaultgateways)
+                //{
+                //    label12.Text = defaultgateways.ToString();
+                //}
             }
 
             foreach (NetworkInterface ni in NetworkInterface.GetAllNetworkInterfaces())
@@ -68,8 +68,10 @@ namespace NetConfigurtor
             cp.ClassName = "SysIPAddress32";
             IPGlobalProperties ipProperties = IPGlobalProperties.GetIPGlobalProperties();
             label15.Text = ipProperties.HostName.ToString();
-
-
+            radioButton2.Checked=true;
+            imgValid.Visible= false;
+            comboBox2.SelectedIndex =1;
+            checkBox1.Checked= true;
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -102,11 +104,12 @@ namespace NetConfigurtor
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string Interface2 = "Ethernet2";
+            string interfacebox = comboBox2.SelectedItem.ToString();
+            imgValid.Visible= true;
 
             if (radioButton1.Checked == true)
             {
-                SetCMD("/c netsh interface ipv4 set address " + Interface2 + " dhcp");
+                SetCMD("/c netsh interface ipv4 set address \"" + interfacebox + "\" dhcp");
             }
 
             if (radioButton2.Checked == true)
@@ -116,41 +119,25 @@ namespace NetConfigurtor
                 string wifiDefaultGetway = getway.Text;
 
 
-                string interfacebox = comboBox2.SelectedItem.ToString();
+                //string interfacebox = comboBox2.SelectedItem.ToString();
                 string PrimaryDNS = pri_Dns.Text;
                 string SecondDNS = sec_Dns.Text;
 
                 
 
-                SetCMD("/c netsh interface ipv4 set address " + interfacebox + " static " + IpAddress + " " + Subnet + " " + wifiDefaultGetway + "");
+                SetCMD("/c netsh interface ipv4 set address \"" + interfacebox + "\" static " + IpAddress + " " + Subnet + " " + wifiDefaultGetway + "");
 
                 if (checkBox1.Checked == true)
                 {
-                    SetCMD("/c netsh interface ipv4 set dns " + interfacebox + " static " + PrimaryDNS + " & netsh interface ipv4 add dns " + Interface2 + " " + SecondDNS + " index=2");
+                    SetCMD("/c netsh interface ipv4 set dns \"" + interfacebox + "\" static " + PrimaryDNS + " & netsh interface ipv4 add dns \"" + interfacebox + "\" " + SecondDNS + " index=2");
                 }
                 if (checkBox1.Checked == false)
                 {
-                    SetCMD("/c netsh interface ipv4 set dns " + interfacebox + " dhcp");
+                    SetCMD("/c netsh interface ipv4 set dns \"" + interfacebox + "\" dhcp");
                 }
 
             }
 
-            string NewName = textBox6.Text;
-            string message = "Vos modification on bien ete pris en compte. Voulez-vous Redemarer ?";
-            string caption = "Information";
-
-            var result = MessageBox.Show(message, caption,
-                            MessageBoxButtons.YesNo,
-                            MessageBoxIcon.Information);
-            if (result == DialogResult.Yes)
-            {
-                SetCMD("/c Shutdown -r -t 0");
-            }
-            if (result == DialogResult.No)
-            {
-                return;
-            }
-            
         }
         private void button4_Click(object sender, EventArgs e)
         {
@@ -345,15 +332,15 @@ namespace NetConfigurtor
 
                 string message = "Vous Devez Redemarrer votre ordinateur " + NewName +" pour appliquer ces modifications. Voulez-vous Redemarer ?";
                 string caption = "Information";
-
-                SetCMD("/c WMIC Computersystem where Name='%COMPUTERNAME%' call Rename Name=" + NewName +"");
+                SetCMD("/c WMIC Computersystem where Name='%COMPUTERNAME%' call Rename Name=" + NewName +" ");
 
                 var result = MessageBox.Show(message, caption,
                                 MessageBoxButtons.YesNo,
                                 MessageBoxIcon.Information);
                 if (result == DialogResult.Yes)
                 {
-                    SetCMD("/c Shutdown -r -t 0");
+                    SetCMD("/c Shutdown -r -t 10");
+                    this.Close();
                 }
                 if (result == DialogResult.No)
                 {
@@ -409,6 +396,11 @@ namespace NetConfigurtor
         }
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label17_Click(object sender, EventArgs e)
         {
 
         }
