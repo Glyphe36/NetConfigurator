@@ -87,7 +87,6 @@
             this.Title.Size = new System.Drawing.Size(186, 18);
             this.Title.TabIndex = 1;
             this.Title.Text = "Assitance de configuration IP";
-            this.Title.Click += new System.EventHandler(this.label1_Click);
             // 
             // panel1
             // 
@@ -125,7 +124,7 @@
             // 
             this.renameLabel.AutoSize = true;
             this.renameLabel.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.renameLabel.Location = new System.Drawing.Point(52, 601);
+            this.renameLabel.Location = new System.Drawing.Point(52, 591);
             this.renameLabel.Name = "renameLabel";
             this.renameLabel.Size = new System.Drawing.Size(99, 14);
             this.renameLabel.TabIndex = 14;
@@ -133,7 +132,7 @@
             // 
             // renameTextBox
             // 
-            this.renameTextBox.Location = new System.Drawing.Point(157, 598);
+            this.renameTextBox.Location = new System.Drawing.Point(157, 588);
             this.renameTextBox.Name = "renameTextBox";
             this.renameTextBox.Size = new System.Drawing.Size(130, 22);
             this.renameTextBox.TabIndex = 13;
@@ -236,7 +235,7 @@
             // 
             this.RenameTilteLabel.AutoSize = true;
             this.RenameTilteLabel.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RenameTilteLabel.Location = new System.Drawing.Point(33, 571);
+            this.RenameTilteLabel.Location = new System.Drawing.Point(33, 561);
             this.RenameTilteLabel.Name = "RenameTilteLabel";
             this.RenameTilteLabel.Size = new System.Drawing.Size(175, 18);
             this.RenameTilteLabel.TabIndex = 33;
@@ -245,7 +244,7 @@
             // nameComputerLabel
             // 
             this.nameComputerLabel.AutoSize = true;
-            this.nameComputerLabel.Location = new System.Drawing.Point(239, 575);
+            this.nameComputerLabel.Location = new System.Drawing.Point(239, 565);
             this.nameComputerLabel.Name = "nameComputerLabel";
             this.nameComputerLabel.Size = new System.Drawing.Size(48, 14);
             this.nameComputerLabel.TabIndex = 34;
@@ -325,9 +324,7 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.comboBoxInterface);
             this.tabPage1.Controls.Add(this.checkBoxDns);
-            this.tabPage1.Controls.Add(this.InterfaceLabel);
             this.tabPage1.Controls.Add(this.DesciptionParaIp);
             this.tabPage1.Controls.Add(this.maskTextBox);
             this.tabPage1.Controls.Add(this.dnsSecLabel);
@@ -342,7 +339,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 23);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(417, 372);
+            this.tabPage1.Size = new System.Drawing.Size(417, 328);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Parametres IP";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -350,16 +347,16 @@
             // comboBoxInterface
             // 
             this.comboBoxInterface.FormattingEnabled = true;
-            this.comboBoxInterface.Location = new System.Drawing.Point(222, 17);
+            this.comboBoxInterface.Location = new System.Drawing.Point(244, 143);
             this.comboBoxInterface.Name = "comboBoxInterface";
-            this.comboBoxInterface.Size = new System.Drawing.Size(137, 22);
+            this.comboBoxInterface.Size = new System.Drawing.Size(157, 22);
             this.comboBoxInterface.TabIndex = 34;
             // 
             // checkBoxDns
             // 
             this.checkBoxDns.AutoSize = true;
             this.checkBoxDns.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxDns.Location = new System.Drawing.Point(16, 246);
+            this.checkBoxDns.Location = new System.Drawing.Point(16, 209);
             this.checkBoxDns.Name = "checkBoxDns";
             this.checkBoxDns.Size = new System.Drawing.Size(187, 22);
             this.checkBoxDns.TabIndex = 33;
@@ -371,7 +368,7 @@
             // 
             this.InterfaceLabel.AutoSize = true;
             this.InterfaceLabel.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.InterfaceLabel.Location = new System.Drawing.Point(30, 17);
+            this.InterfaceLabel.Location = new System.Drawing.Point(38, 143);
             this.InterfaceLabel.Name = "InterfaceLabel";
             this.InterfaceLabel.Size = new System.Drawing.Size(71, 18);
             this.InterfaceLabel.TabIndex = 36;
@@ -380,7 +377,7 @@
             // DesciptionParaIp
             // 
             this.DesciptionParaIp.AutoSize = true;
-            this.DesciptionParaIp.Location = new System.Drawing.Point(13, 54);
+            this.DesciptionParaIp.Location = new System.Drawing.Point(13, 17);
             this.DesciptionParaIp.Name = "DesciptionParaIp";
             this.DesciptionParaIp.Size = new System.Drawing.Size(392, 42);
             this.DesciptionParaIp.TabIndex = 32;
@@ -397,7 +394,7 @@
             this.maskTextBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.maskTextBox.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.maskTextBox.IPAddress = ((System.Net.IPAddress)(resources.GetObject("maskTextBox.IPAddress")));
-            this.maskTextBox.Location = new System.Drawing.Point(222, 164);
+            this.maskTextBox.Location = new System.Drawing.Point(222, 127);
             this.maskTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.maskTextBox.Name = "maskTextBox";
             this.maskTextBox.Size = new System.Drawing.Size(134, 19);
@@ -407,7 +404,7 @@
             // 
             this.dnsSecLabel.AutoSize = true;
             this.dnsSecLabel.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dnsSecLabel.Location = new System.Drawing.Point(35, 331);
+            this.dnsSecLabel.Location = new System.Drawing.Point(35, 294);
             this.dnsSecLabel.Name = "dnsSecLabel";
             this.dnsSecLabel.Size = new System.Drawing.Size(91, 14);
             this.dnsSecLabel.TabIndex = 12;
@@ -422,7 +419,7 @@
             this.ipAddressTextBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.ipAddressTextBox.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ipAddressTextBox.IPAddress = ((System.Net.IPAddress)(resources.GetObject("ipAddressTextBox.IPAddress")));
-            this.ipAddressTextBox.Location = new System.Drawing.Point(222, 126);
+            this.ipAddressTextBox.Location = new System.Drawing.Point(222, 89);
             this.ipAddressTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.ipAddressTextBox.Name = "ipAddressTextBox";
             this.ipAddressTextBox.Size = new System.Drawing.Size(134, 19);
@@ -432,7 +429,7 @@
             // 
             this.dnsPrimLabel.AutoSize = true;
             this.dnsPrimLabel.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dnsPrimLabel.Location = new System.Drawing.Point(35, 291);
+            this.dnsPrimLabel.Location = new System.Drawing.Point(35, 254);
             this.dnsPrimLabel.Name = "dnsPrimLabel";
             this.dnsPrimLabel.Size = new System.Drawing.Size(78, 14);
             this.dnsPrimLabel.TabIndex = 10;
@@ -447,7 +444,7 @@
             this.getwayTextBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.getwayTextBox.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.getwayTextBox.IPAddress = ((System.Net.IPAddress)(resources.GetObject("getwayTextBox.IPAddress")));
-            this.getwayTextBox.Location = new System.Drawing.Point(222, 204);
+            this.getwayTextBox.Location = new System.Drawing.Point(222, 167);
             this.getwayTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.getwayTextBox.Name = "getwayTextBox";
             this.getwayTextBox.Size = new System.Drawing.Size(134, 19);
@@ -457,7 +454,7 @@
             // 
             this.GatewayLabel.AutoSize = true;
             this.GatewayLabel.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.GatewayLabel.Location = new System.Drawing.Point(35, 209);
+            this.GatewayLabel.Location = new System.Drawing.Point(35, 172);
             this.GatewayLabel.Name = "GatewayLabel";
             this.GatewayLabel.Size = new System.Drawing.Size(134, 14);
             this.GatewayLabel.TabIndex = 8;
@@ -472,7 +469,7 @@
             this.dnsPrimTextBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dnsPrimTextBox.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dnsPrimTextBox.IPAddress = ((System.Net.IPAddress)(resources.GetObject("dnsPrimTextBox.IPAddress")));
-            this.dnsPrimTextBox.Location = new System.Drawing.Point(222, 286);
+            this.dnsPrimTextBox.Location = new System.Drawing.Point(222, 249);
             this.dnsPrimTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.dnsPrimTextBox.Name = "dnsPrimTextBox";
             this.dnsPrimTextBox.Size = new System.Drawing.Size(134, 19);
@@ -482,7 +479,7 @@
             // 
             this.MaskLabel.AutoSize = true;
             this.MaskLabel.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MaskLabel.Location = new System.Drawing.Point(35, 169);
+            this.MaskLabel.Location = new System.Drawing.Point(35, 132);
             this.MaskLabel.Name = "MaskLabel";
             this.MaskLabel.Size = new System.Drawing.Size(148, 14);
             this.MaskLabel.TabIndex = 6;
@@ -497,7 +494,7 @@
             this.dnsSecTextBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dnsSecTextBox.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dnsSecTextBox.IPAddress = ((System.Net.IPAddress)(resources.GetObject("dnsSecTextBox.IPAddress")));
-            this.dnsSecTextBox.Location = new System.Drawing.Point(222, 326);
+            this.dnsSecTextBox.Location = new System.Drawing.Point(222, 289);
             this.dnsSecTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.dnsSecTextBox.Name = "dnsSecTextBox";
             this.dnsSecTextBox.Size = new System.Drawing.Size(134, 19);
@@ -507,7 +504,7 @@
             // 
             this.AdressIpLabel.AutoSize = true;
             this.AdressIpLabel.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AdressIpLabel.Location = new System.Drawing.Point(35, 131);
+            this.AdressIpLabel.Location = new System.Drawing.Point(35, 94);
             this.AdressIpLabel.Name = "AdressIpLabel";
             this.AdressIpLabel.Size = new System.Drawing.Size(70, 14);
             this.AdressIpLabel.TabIndex = 4;
@@ -517,16 +514,16 @@
             // 
             this.tabControlIp.Controls.Add(this.tabPage1);
             this.tabControlIp.Controls.Add(this.tabPage2);
-            this.tabControlIp.Location = new System.Drawing.Point(-1, 144);
+            this.tabControlIp.Location = new System.Drawing.Point(-1, 172);
             this.tabControlIp.Name = "tabControlIp";
             this.tabControlIp.SelectedIndex = 0;
-            this.tabControlIp.Size = new System.Drawing.Size(425, 399);
+            this.tabControlIp.Size = new System.Drawing.Size(425, 355);
             this.tabControlIp.TabIndex = 32;
             // 
             // DesciptionRenamelabel
             // 
             this.DesciptionRenamelabel.AutoSize = true;
-            this.DesciptionRenamelabel.Location = new System.Drawing.Point(16, 546);
+            this.DesciptionRenamelabel.Location = new System.Drawing.Point(16, 536);
             this.DesciptionRenamelabel.Name = "DesciptionRenamelabel";
             this.DesciptionRenamelabel.Size = new System.Drawing.Size(253, 14);
             this.DesciptionRenamelabel.TabIndex = 35;
@@ -537,8 +534,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(422, 685);
+            this.Controls.Add(this.comboBoxInterface);
             this.Controls.Add(this.DesciptionRenamelabel);
             this.Controls.Add(this.nameComputerLabel);
+            this.Controls.Add(this.InterfaceLabel);
             this.Controls.Add(this.RenameTilteLabel);
             this.Controls.Add(this.renameLabel);
             this.Controls.Add(this.comboBoxIpManuel);

@@ -42,11 +42,22 @@ namespace NetConfigurtor
                     masque.Text = subnets[0];
                 }
 
-                //string[] defaultgateways = (string[])mo["DefaultIPGateway"];
-                //foreach (string defaultipgateway in defaultgateways)
-                //{
-                //    label12.Text = defaultgateways.ToString();
-                //}
+            }
+
+            IPGlobalProperties ipProperties = IPGlobalProperties.GetIPGlobalProperties();
+
+            foreach (NetworkInterface networkCard in NetworkInterface.GetAllNetworkInterfaces())
+
+            {
+
+                foreach (GatewayIPAddressInformation gatewayAddr in networkCard.GetIPProperties().GatewayAddresses)
+
+                {
+
+                    label12.Text = gatewayAddr.Address.ToString();
+
+                }
+
             }
 
             foreach (NetworkInterface ni in NetworkInterface.GetAllNetworkInterfaces())
