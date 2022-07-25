@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.IO;
 using System.Management;
 using System.Net;
 using System.Net.NetworkInformation;
@@ -20,8 +21,8 @@ namespace NetConfigurtor
         public Form1()
         {
             InitializeComponent();
-            radioButton1.Checked = true;
-            checkBox1.Checked = false;
+            radioButtonIpAuto.Checked = true;
+            checkBoxDns.Checked = false;
 
             ManagementObjectSearcher NetworkSearcher = new ManagementObjectSearcher("SELECT * FROM Win32_NetworkAdapterConfiguration WHERE IPEnabled = 'TRUE'");
             ManagementObjectCollection moCollection = NetworkSearcher.Get();
@@ -52,7 +53,7 @@ namespace NetConfigurtor
             {
                 if (ni.NetworkInterfaceType == NetworkInterfaceType.Ethernet)
                 {
-                    comboBox2.Items.Add(ni.Name);
+                    comboBoxInterface.Items.Add(ni.Name);
                     Console.WriteLine(ni.Name);
                 }
             }
@@ -60,23 +61,16 @@ namespace NetConfigurtor
 
         }
 
-
-
         private void Form1_Load(object sender, EventArgs e)
         {
             CreateParams cp = base.CreateParams;
             cp.ClassName = "SysIPAddress32";
             IPGlobalProperties ipProperties = IPGlobalProperties.GetIPGlobalProperties();
-            label15.Text = ipProperties.HostName.ToString();
-            radioButton2.Checked=true;
+            nameComputerLabel.Text = ipProperties.HostName.ToString();
+            radioButtonIpManuel.Checked=true;
             imgValid.Visible= false;
-            comboBox2.SelectedIndex =1;
-            checkBox1.Checked= true;
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
+            comboBoxInterface.SelectedIndex =1;
+            checkBoxDns.Checked= true;
         }
 
         private void SetCMD(string arg)
@@ -104,34 +98,34 @@ namespace NetConfigurtor
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string interfacebox = comboBox2.SelectedItem.ToString();
+            string interfacebox = comboBoxInterface.SelectedItem.ToString();
             imgValid.Visible= true;
 
-            if (radioButton1.Checked == true)
+            if (radioButtonIpAuto.Checked == true)
             {
                 SetCMD("/c netsh interface ipv4 set address \"" + interfacebox + "\" dhcp");
             }
 
-            if (radioButton2.Checked == true)
+            if (radioButtonIpManuel.Checked == true)
             {
-                string IpAddress = ip_address.Text;
-                string Subnet = subnet_mask.Text;
-                string wifiDefaultGetway = getway.Text;
+                string IpAddress = ipAddressTextBox.Text;
+                string Subnet = maskTextBox.Text;
+                string wifiDefaultGetway = getwayTextBox.Text;
 
 
                 //string interfacebox = comboBox2.SelectedItem.ToString();
-                string PrimaryDNS = pri_Dns.Text;
-                string SecondDNS = sec_Dns.Text;
+                string PrimaryDNS = dnsPrimTextBox.Text;
+                string SecondDNS = dnsSecTextBox.Text;
 
                 
 
                 SetCMD("/c netsh interface ipv4 set address \"" + interfacebox + "\" static " + IpAddress + " " + Subnet + " " + wifiDefaultGetway + "");
 
-                if (checkBox1.Checked == true)
+                if (checkBoxDns.Checked == true)
                 {
                     SetCMD("/c netsh interface ipv4 set dns \"" + interfacebox + "\" static " + PrimaryDNS + " & netsh interface ipv4 add dns \"" + interfacebox + "\" " + SecondDNS + " index=2");
                 }
-                if (checkBox1.Checked == false)
+                if (checkBoxDns.Checked == false)
                 {
                     SetCMD("/c netsh interface ipv4 set dns \"" + interfacebox + "\" dhcp");
                 }
@@ -139,11 +133,6 @@ namespace NetConfigurtor
             }
 
         }
-        private void button4_Click(object sender, EventArgs e)
-        {
-            
-        }
-
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
@@ -155,12 +144,12 @@ namespace NetConfigurtor
                 masque.Enabled = true;
                 label12.Enabled = true;
 
-                comboBox1.Enabled = false;
-                ip_address.Enabled = false;
-                subnet_mask.Enabled = false;
-                getway.Enabled = false;
-                pri_Dns.Enabled = false;
-                sec_Dns.Enabled = false;
+                comboBoxIpManuel.Enabled = false;
+                ipAddressTextBox.Enabled = false;
+                maskTextBox.Enabled = false;
+                getwayTextBox.Enabled = false;
+                dnsPrimTextBox.Enabled = false;
+                dnsSecTextBox.Enabled = false;
 
 
 
@@ -173,12 +162,12 @@ namespace NetConfigurtor
             if (true)
             {
 
-                comboBox1.Enabled = true;
-                ip_address.Enabled = true;
-                subnet_mask.Enabled = true;
-                getway.Enabled = true;
-                pri_Dns.Enabled = true;
-                sec_Dns.Enabled = true;
+                comboBoxIpManuel.Enabled = true;
+                ipAddressTextBox.Enabled = true;
+                maskTextBox.Enabled = true;
+                getwayTextBox.Enabled = true;
+                dnsPrimTextBox.Enabled = true;
+                dnsSecTextBox.Enabled = true;
                 // si checkbox true afficher la liste des imprimante existante
 
 
@@ -188,46 +177,46 @@ namespace NetConfigurtor
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-            if (comboBox1.SelectedItem.ToString() == "Desk")
+            if (comboBoxIpManuel.SelectedItem.ToString() == "Desk")
             {
-                ip_address.Text = "10.123.10.1";
-                subnet_mask.Text = "255.255.0.0";
-                getway.Text = "";
-                checkBox1.Checked = false;
+                ipAddressTextBox.Text = "10.123.10.1";
+                maskTextBox.Text = "255.255.0.0";
+                getwayTextBox.Text = "";
+                checkBoxDns.Checked = false;
             }
 
-            if (comboBox1.SelectedItem.ToString() == "Preview")
+            if (comboBoxIpManuel.SelectedItem.ToString() == "Preview")
             {
-                ip_address.Text = "10.123.20.1";
-                subnet_mask.Text = "255.255.0.0";
-                getway.Text = "";
-                checkBox1.Checked = false;
+                ipAddressTextBox.Text = "10.123.20.1";
+                maskTextBox.Text = "255.255.0.0";
+                getwayTextBox.Text = "";
+                checkBoxDns.Checked = false;
             }
 
-            if (comboBox1.SelectedItem.ToString() == "Room")
+            if (comboBoxIpManuel.SelectedItem.ToString() == "Room")
             {
-                ip_address.Text = "10.123.30.1";
-                subnet_mask.Text = "255.255.0.0";
-                getway.Text = "";
-                checkBox1.Checked = false;
+                ipAddressTextBox.Text = "10.123.30.1";
+                maskTextBox.Text = "255.255.0.0";
+                getwayTextBox.Text = "";
+                checkBoxDns.Checked = false;
             }
 
-            if (comboBox1.SelectedItem.ToString() == "Display")
+            if (comboBoxIpManuel.SelectedItem.ToString() == "Display")
             {
-                ip_address.Text = "10.123.40.1";
-                subnet_mask.Text = "255.255.0.0";
-                getway.Text = "";
-                checkBox1.Checked = false;
+                ipAddressTextBox.Text = "10.123.40.1";
+                maskTextBox.Text = "255.255.0.0";
+                getwayTextBox.Text = "";
+                checkBoxDns.Checked = false;
             }
 
-            if (comboBox1.SelectedItem.ToString() == "Accre")
+            if (comboBoxIpManuel.SelectedItem.ToString() == "Accre")
             {
-                ip_address.Text = "172.20.10.1";
-                subnet_mask.Text = "255.255.0.0";
-                getway.Text = "172.20.0.254";
-                checkBox1.Checked = true;
-                pri_Dns.Text = "8.8.8.8";
-                sec_Dns.Text = "1.1.1.1";
+                ipAddressTextBox.Text = "172.20.10.1";
+                maskTextBox.Text = "255.255.0.0";
+                getwayTextBox.Text = "172.20.0.254";
+                checkBoxDns.Checked = true;
+                dnsPrimTextBox.Text = "8.8.8.8";
+                dnsSecTextBox.Text = "1.1.1.1";
             }
 
 
@@ -236,90 +225,26 @@ namespace NetConfigurtor
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox1.Checked == false)
+            if (checkBoxDns.Checked == false)
             {
-                pri_Dns.Enabled = false;
-                sec_Dns.Enabled=false;
-                pri_Dns.Text = Dns0;
-                sec_Dns.Text = Dns0;
+                dnsPrimTextBox.Enabled = false;
+                dnsSecTextBox.Enabled=false;
+                dnsPrimTextBox.Text = Dns0;
+                dnsSecTextBox.Text = Dns0;
             }
-            if (checkBox1.Checked == true)
+            if (checkBoxDns.Checked == true)
             {
-                pri_Dns.Enabled = true;
-                sec_Dns.Enabled= true;
-                pri_Dns.Text = Dns8;
-                sec_Dns.Text = Dns1;
+                dnsPrimTextBox.Enabled = true;
+                dnsSecTextBox.Enabled= true;
+                dnsPrimTextBox.Text = Dns8;
+                dnsSecTextBox.Text = Dns1;
 
             }
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ip_address_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label13_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label12_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
-        {
-
-        }
-
-        private void iPv4AddressTextBox4_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void radioButton3_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label8_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox6_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void button3_Click_1(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(textBox6.Text))
+            if (string.IsNullOrEmpty(renameTextBox.Text))
             {
                 string message = "Vous Devez definir un nom pour votre ordinateur !";
                 string caption = "Information";
@@ -328,7 +253,7 @@ namespace NetConfigurtor
             }
             else
             {
-                string NewName = textBox6.Text;
+                string NewName = renameTextBox.Text;
 
                 string message = "Vous Devez Redemarrer votre ordinateur " + NewName +" pour appliquer ces modifications. Voulez-vous Redemarer ?";
                 string caption = "Information";
@@ -350,59 +275,26 @@ namespace NetConfigurtor
 
             }
         }
-
-        private void label20_Click(object sender, EventArgs e)
+        private void btnActiveWindows_Click(object sender, EventArgs e)
         {
+            string PathKeyInstall = "C:\\key4 install\\activation Office 2019.bat";
+
+            MessageBox.Show(PathKeyInstall);
+            System.Diagnostics.Process proc = new System.Diagnostics.Process();
+            proc.StartInfo.FileName = PathKeyInstall;
+            proc.Start();
+
+            if (!File.Exists(PathKeyInstall))
+            {
+                MessageBox.Show("Le fichier d'installation est introuvable, verifier bien qu'il existe Key4install !");
+            }
+
 
         }
-
-        private void label16_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
-
-        private void tabPage2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBoxLanInternet_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Interfacetitle_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label16_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label16_Click_2(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tabPage1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button4_Click_1(object sender, EventArgs e)
-        {
-        }
-
-        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label17_Click(object sender, EventArgs e)
-        {
-
-        }
+  
     }
 }
