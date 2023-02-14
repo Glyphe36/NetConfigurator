@@ -32,6 +32,7 @@
             this.Title = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnActiveWindows = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.DesciptionTitle = new System.Windows.Forms.Label();
             this.renameLabel = new System.Windows.Forms.Label();
             this.renameTextBox = new System.Windows.Forms.TextBox();
@@ -44,8 +45,15 @@
             this.radioButtonIpManuel = new System.Windows.Forms.RadioButton();
             this.comboBoxIpManuel = new System.Windows.Forms.ComboBox();
             this.RenameTilteLabel = new System.Windows.Forms.Label();
-            this.nameComputerLabel = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.valideprinter = new System.Windows.Forms.PictureBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.Imprimante = new System.Windows.Forms.Label();
+            this.txtIpprinter = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.LstPrinterLocal = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.ipAuto = new System.Windows.Forms.Label();
@@ -53,26 +61,27 @@
             this.masque = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.comboBoxInterface = new System.Windows.Forms.ComboBox();
+            this.dnsSecTextBox = new System.Windows.Forms.TextBox();
+            this.dnsPrimTextBox = new System.Windows.Forms.TextBox();
+            this.getwayTextBox = new System.Windows.Forms.TextBox();
+            this.maskTextBox = new System.Windows.Forms.TextBox();
+            this.ipAddressTextBox = new System.Windows.Forms.TextBox();
             this.checkBoxDns = new System.Windows.Forms.CheckBox();
-            this.InterfaceLabel = new System.Windows.Forms.Label();
             this.DesciptionParaIp = new System.Windows.Forms.Label();
-            this.maskTextBox = new IPv4Address.IPv4AddressTextBox();
             this.dnsSecLabel = new System.Windows.Forms.Label();
-            this.ipAddressTextBox = new IPv4Address.IPv4AddressTextBox();
             this.dnsPrimLabel = new System.Windows.Forms.Label();
-            this.getwayTextBox = new IPv4Address.IPv4AddressTextBox();
             this.GatewayLabel = new System.Windows.Forms.Label();
-            this.dnsPrimTextBox = new IPv4Address.IPv4AddressTextBox();
             this.MaskLabel = new System.Windows.Forms.Label();
-            this.dnsSecTextBox = new IPv4Address.IPv4AddressTextBox();
             this.AdressIpLabel = new System.Windows.Forms.Label();
+            this.comboBoxInterface = new System.Windows.Forms.ComboBox();
+            this.InterfaceLabel = new System.Windows.Forms.Label();
             this.tabControlIp = new System.Windows.Forms.TabControl();
             this.DesciptionRenamelabel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgValid)).BeginInit();
             this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.valideprinter)).BeginInit();
             this.tabPage1.SuspendLayout();
             this.tabControlIp.SuspendLayout();
             this.SuspendLayout();
@@ -92,6 +101,7 @@
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.panel1.Controls.Add(this.btnActiveWindows);
+            this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.DesciptionTitle);
             this.panel1.Controls.Add(this.Title);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -102,13 +112,23 @@
             // 
             // btnActiveWindows
             // 
-            this.btnActiveWindows.Location = new System.Drawing.Point(260, 26);
+            this.btnActiveWindows.Location = new System.Drawing.Point(269, 41);
             this.btnActiveWindows.Name = "btnActiveWindows";
             this.btnActiveWindows.Size = new System.Drawing.Size(141, 23);
-            this.btnActiveWindows.TabIndex = 36;
-            this.btnActiveWindows.Text = "Activation Windows";
+            this.btnActiveWindows.TabIndex = 2;
+            this.btnActiveWindows.Text = "Configuration réseau";
             this.btnActiveWindows.UseVisualStyleBackColor = true;
             this.btnActiveWindows.Click += new System.EventHandler(this.btnActiveWindows_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(269, 12);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(141, 23);
+            this.button2.TabIndex = 1;
+            this.button2.Text = "désactiver pare-feu";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
             // DesciptionTitle
             // 
@@ -142,7 +162,7 @@
             this.btnOk.Location = new System.Drawing.Point(149, 16);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(75, 25);
-            this.btnOk.TabIndex = 15;
+            this.btnOk.TabIndex = 14;
             this.btnOk.Text = "Ok";
             this.btnOk.UseVisualStyleBackColor = true;
             this.btnOk.Click += new System.EventHandler(this.button1_Click);
@@ -175,7 +195,7 @@
             this.btnRestart.Location = new System.Drawing.Point(230, 16);
             this.btnRestart.Name = "btnRestart";
             this.btnRestart.Size = new System.Drawing.Size(87, 25);
-            this.btnRestart.TabIndex = 35;
+            this.btnRestart.TabIndex = 15;
             this.btnRestart.Text = "Redemarrer";
             this.btnRestart.UseVisualStyleBackColor = true;
             this.btnRestart.Click += new System.EventHandler(this.button3_Click_1);
@@ -185,7 +205,7 @@
             this.btnCancel.Location = new System.Drawing.Point(323, 16);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(81, 25);
-            this.btnCancel.TabIndex = 34;
+            this.btnCancel.TabIndex = 16;
             this.btnCancel.Text = "Annuler";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.button2_Click);
@@ -198,7 +218,7 @@
             this.radioButtonIpAuto.Location = new System.Drawing.Point(22, 85);
             this.radioButtonIpAuto.Name = "radioButtonIpAuto";
             this.radioButtonIpAuto.Size = new System.Drawing.Size(130, 22);
-            this.radioButtonIpAuto.TabIndex = 17;
+            this.radioButtonIpAuto.TabIndex = 3;
             this.radioButtonIpAuto.TabStop = true;
             this.radioButtonIpAuto.Text = "Ip Automatique :";
             this.radioButtonIpAuto.UseVisualStyleBackColor = true;
@@ -211,7 +231,7 @@
             this.radioButtonIpManuel.Location = new System.Drawing.Point(22, 113);
             this.radioButtonIpManuel.Name = "radioButtonIpManuel";
             this.radioButtonIpManuel.Size = new System.Drawing.Size(96, 22);
-            this.radioButtonIpManuel.TabIndex = 18;
+            this.radioButtonIpManuel.TabIndex = 4;
             this.radioButtonIpManuel.Text = "Ip Manuel :";
             this.radioButtonIpManuel.UseVisualStyleBackColor = true;
             this.radioButtonIpManuel.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
@@ -228,7 +248,7 @@
             this.comboBoxIpManuel.Location = new System.Drawing.Point(244, 113);
             this.comboBoxIpManuel.Name = "comboBoxIpManuel";
             this.comboBoxIpManuel.Size = new System.Drawing.Size(157, 22);
-            this.comboBoxIpManuel.TabIndex = 19;
+            this.comboBoxIpManuel.TabIndex = 5;
             this.comboBoxIpManuel.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // RenameTilteLabel
@@ -241,17 +261,16 @@
             this.RenameTilteLabel.TabIndex = 33;
             this.RenameTilteLabel.Text = "Renommer cet ordinateur :\r\n";
             // 
-            // nameComputerLabel
-            // 
-            this.nameComputerLabel.AutoSize = true;
-            this.nameComputerLabel.Location = new System.Drawing.Point(239, 565);
-            this.nameComputerLabel.Name = "nameComputerLabel";
-            this.nameComputerLabel.Size = new System.Drawing.Size(48, 14);
-            this.nameComputerLabel.TabIndex = 34;
-            this.nameComputerLabel.Text = "label15";
-            // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.valideprinter);
+            this.tabPage2.Controls.Add(this.label3);
+            this.tabPage2.Controls.Add(this.button1);
+            this.tabPage2.Controls.Add(this.label2);
+            this.tabPage2.Controls.Add(this.Imprimante);
+            this.tabPage2.Controls.Add(this.txtIpprinter);
+            this.tabPage2.Controls.Add(this.label1);
+            this.tabPage2.Controls.Add(this.LstPrinterLocal);
             this.tabPage2.Controls.Add(this.label9);
             this.tabPage2.Controls.Add(this.label11);
             this.tabPage2.Controls.Add(this.ipAuto);
@@ -260,16 +279,92 @@
             this.tabPage2.Controls.Add(this.label12);
             this.tabPage2.Location = new System.Drawing.Point(4, 23);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Size = new System.Drawing.Size(417, 372);
+            this.tabPage2.Size = new System.Drawing.Size(417, 328);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Votre IP";
+            this.tabPage2.Text = "Avancé";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // valideprinter
+            // 
+            this.valideprinter.AccessibleRole = System.Windows.Forms.AccessibleRole.Sound;
+            this.valideprinter.Image = ((System.Drawing.Image)(resources.GetObject("valideprinter.Image")));
+            this.valideprinter.InitialImage = ((System.Drawing.Image)(resources.GetObject("valideprinter.InitialImage")));
+            this.valideprinter.Location = new System.Drawing.Point(362, 281);
+            this.valideprinter.Name = "valideprinter";
+            this.valideprinter.Size = new System.Drawing.Size(39, 38);
+            this.valideprinter.TabIndex = 37;
+            this.valideprinter.TabStop = false;
+            this.valideprinter.Visible = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(19, 180);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(242, 14);
+            this.label3.TabIndex = 36;
+            this.label3.Text = "Ajouter un port a une imprimante existant :";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(239, 288);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(114, 23);
+            this.button1.TabIndex = 35;
+            this.button1.Text = "Ajouter un port ...";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(16, 19);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(345, 28);
+            this.label2.TabIndex = 34;
+            this.label2.Text = "Ci-dessous vos parametres ip actuels ainsi qu\'une assistance\r\npour l\'ouverture d\'" +
+    "un port ip sur une imprimante.\r\n";
+            // 
+            // Imprimante
+            // 
+            this.Imprimante.AutoSize = true;
+            this.Imprimante.Location = new System.Drawing.Point(35, 214);
+            this.Imprimante.Name = "Imprimante";
+            this.Imprimante.Size = new System.Drawing.Size(77, 14);
+            this.Imprimante.TabIndex = 33;
+            this.Imprimante.Text = "Imprimante :";
+            // 
+            // txtIpprinter
+            // 
+            this.txtIpprinter.Location = new System.Drawing.Point(137, 249);
+            this.txtIpprinter.Name = "txtIpprinter";
+            this.txtIpprinter.Size = new System.Drawing.Size(216, 22);
+            this.txtIpprinter.TabIndex = 32;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(35, 252);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(91, 14);
+            this.label1.TabIndex = 31;
+            this.label1.Text = "Ip Imprimante :";
+            // 
+            // LstPrinterLocal
+            // 
+            this.LstPrinterLocal.AccessibleName = "Listprinters";
+            this.LstPrinterLocal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.LstPrinterLocal.FormattingEnabled = true;
+            this.LstPrinterLocal.Location = new System.Drawing.Point(137, 211);
+            this.LstPrinterLocal.Name = "LstPrinterLocal";
+            this.LstPrinterLocal.Size = new System.Drawing.Size(216, 22);
+            this.LstPrinterLocal.TabIndex = 29;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(16, 118);
+            this.label9.Location = new System.Drawing.Point(35, 144);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(134, 14);
             this.label9.TabIndex = 28;
@@ -279,7 +374,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(16, 40);
+            this.label11.Location = new System.Drawing.Point(35, 66);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(70, 14);
             this.label11.TabIndex = 26;
@@ -288,7 +383,7 @@
             // ipAuto
             // 
             this.ipAuto.AutoSize = true;
-            this.ipAuto.Location = new System.Drawing.Point(222, 40);
+            this.ipAuto.Location = new System.Drawing.Point(241, 66);
             this.ipAuto.Name = "ipAuto";
             this.ipAuto.Size = new System.Drawing.Size(46, 14);
             this.ipAuto.TabIndex = 20;
@@ -298,7 +393,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(16, 78);
+            this.label10.Location = new System.Drawing.Point(35, 104);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(148, 14);
             this.label10.TabIndex = 27;
@@ -307,7 +402,7 @@
             // masque
             // 
             this.masque.AutoSize = true;
-            this.masque.Location = new System.Drawing.Point(222, 78);
+            this.masque.Location = new System.Drawing.Point(241, 104);
             this.masque.Name = "masque";
             this.masque.Size = new System.Drawing.Size(51, 14);
             this.masque.TabIndex = 23;
@@ -316,7 +411,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(222, 118);
+            this.label12.Location = new System.Drawing.Point(241, 144);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(46, 14);
             this.label12.TabIndex = 25;
@@ -324,17 +419,17 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.dnsSecTextBox);
+            this.tabPage1.Controls.Add(this.dnsPrimTextBox);
+            this.tabPage1.Controls.Add(this.getwayTextBox);
+            this.tabPage1.Controls.Add(this.maskTextBox);
+            this.tabPage1.Controls.Add(this.ipAddressTextBox);
             this.tabPage1.Controls.Add(this.checkBoxDns);
             this.tabPage1.Controls.Add(this.DesciptionParaIp);
-            this.tabPage1.Controls.Add(this.maskTextBox);
             this.tabPage1.Controls.Add(this.dnsSecLabel);
-            this.tabPage1.Controls.Add(this.ipAddressTextBox);
             this.tabPage1.Controls.Add(this.dnsPrimLabel);
-            this.tabPage1.Controls.Add(this.getwayTextBox);
             this.tabPage1.Controls.Add(this.GatewayLabel);
-            this.tabPage1.Controls.Add(this.dnsPrimTextBox);
             this.tabPage1.Controls.Add(this.MaskLabel);
-            this.tabPage1.Controls.Add(this.dnsSecTextBox);
             this.tabPage1.Controls.Add(this.AdressIpLabel);
             this.tabPage1.Location = new System.Drawing.Point(4, 23);
             this.tabPage1.Name = "tabPage1";
@@ -344,13 +439,40 @@
             this.tabPage1.Text = "Parametres IP";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // comboBoxInterface
+            // dnsSecTextBox
             // 
-            this.comboBoxInterface.FormattingEnabled = true;
-            this.comboBoxInterface.Location = new System.Drawing.Point(244, 143);
-            this.comboBoxInterface.Name = "comboBoxInterface";
-            this.comboBoxInterface.Size = new System.Drawing.Size(157, 22);
-            this.comboBoxInterface.TabIndex = 34;
+            this.dnsSecTextBox.Location = new System.Drawing.Point(222, 286);
+            this.dnsSecTextBox.Name = "dnsSecTextBox";
+            this.dnsSecTextBox.Size = new System.Drawing.Size(134, 22);
+            this.dnsSecTextBox.TabIndex = 37;
+            // 
+            // dnsPrimTextBox
+            // 
+            this.dnsPrimTextBox.Location = new System.Drawing.Point(222, 246);
+            this.dnsPrimTextBox.Name = "dnsPrimTextBox";
+            this.dnsPrimTextBox.Size = new System.Drawing.Size(134, 22);
+            this.dnsPrimTextBox.TabIndex = 36;
+            // 
+            // getwayTextBox
+            // 
+            this.getwayTextBox.Location = new System.Drawing.Point(222, 164);
+            this.getwayTextBox.Name = "getwayTextBox";
+            this.getwayTextBox.Size = new System.Drawing.Size(134, 22);
+            this.getwayTextBox.TabIndex = 35;
+            // 
+            // maskTextBox
+            // 
+            this.maskTextBox.Location = new System.Drawing.Point(222, 124);
+            this.maskTextBox.Name = "maskTextBox";
+            this.maskTextBox.Size = new System.Drawing.Size(134, 22);
+            this.maskTextBox.TabIndex = 34;
+            // 
+            // ipAddressTextBox
+            // 
+            this.ipAddressTextBox.Location = new System.Drawing.Point(222, 86);
+            this.ipAddressTextBox.Name = "ipAddressTextBox";
+            this.ipAddressTextBox.Size = new System.Drawing.Size(134, 22);
+            this.ipAddressTextBox.TabIndex = 33;
             // 
             // checkBoxDns
             // 
@@ -359,20 +481,10 @@
             this.checkBoxDns.Location = new System.Drawing.Point(16, 209);
             this.checkBoxDns.Name = "checkBoxDns";
             this.checkBoxDns.Size = new System.Drawing.Size(187, 22);
-            this.checkBoxDns.TabIndex = 33;
+            this.checkBoxDns.TabIndex = 10;
             this.checkBoxDns.Text = "Utiliser une adresse DNS :";
             this.checkBoxDns.UseVisualStyleBackColor = true;
             this.checkBoxDns.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
-            // 
-            // InterfaceLabel
-            // 
-            this.InterfaceLabel.AutoSize = true;
-            this.InterfaceLabel.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.InterfaceLabel.Location = new System.Drawing.Point(38, 143);
-            this.InterfaceLabel.Name = "InterfaceLabel";
-            this.InterfaceLabel.Size = new System.Drawing.Size(71, 18);
-            this.InterfaceLabel.TabIndex = 36;
-            this.InterfaceLabel.Text = "Interface :";
             // 
             // DesciptionParaIp
             // 
@@ -385,21 +497,6 @@
     "rmet. Sinon, vous devez demander les parametres IP\r\nappropries a votre administr" +
     "ateur reseau.";
             // 
-            // maskTextBox
-            // 
-            this.maskTextBox.AccessibleRole = System.Windows.Forms.AccessibleRole.Text;
-            this.maskTextBox.AutoSize = true;
-            this.maskTextBox.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.maskTextBox.BackColor = System.Drawing.SystemColors.Window;
-            this.maskTextBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.maskTextBox.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.maskTextBox.IPAddress = ((System.Net.IPAddress)(resources.GetObject("maskTextBox.IPAddress")));
-            this.maskTextBox.Location = new System.Drawing.Point(222, 127);
-            this.maskTextBox.Margin = new System.Windows.Forms.Padding(2);
-            this.maskTextBox.Name = "maskTextBox";
-            this.maskTextBox.Size = new System.Drawing.Size(134, 19);
-            this.maskTextBox.TabIndex = 27;
-            // 
             // dnsSecLabel
             // 
             this.dnsSecLabel.AutoSize = true;
@@ -409,21 +506,6 @@
             this.dnsSecLabel.Size = new System.Drawing.Size(91, 14);
             this.dnsSecLabel.TabIndex = 12;
             this.dnsSecLabel.Text = "DNS auxiliaire :";
-            // 
-            // ipAddressTextBox
-            // 
-            this.ipAddressTextBox.AccessibleRole = System.Windows.Forms.AccessibleRole.Text;
-            this.ipAddressTextBox.AutoSize = true;
-            this.ipAddressTextBox.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ipAddressTextBox.BackColor = System.Drawing.SystemColors.Window;
-            this.ipAddressTextBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.ipAddressTextBox.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ipAddressTextBox.IPAddress = ((System.Net.IPAddress)(resources.GetObject("ipAddressTextBox.IPAddress")));
-            this.ipAddressTextBox.Location = new System.Drawing.Point(222, 89);
-            this.ipAddressTextBox.Margin = new System.Windows.Forms.Padding(2);
-            this.ipAddressTextBox.Name = "ipAddressTextBox";
-            this.ipAddressTextBox.Size = new System.Drawing.Size(134, 19);
-            this.ipAddressTextBox.TabIndex = 28;
             // 
             // dnsPrimLabel
             // 
@@ -435,21 +517,6 @@
             this.dnsPrimLabel.TabIndex = 10;
             this.dnsPrimLabel.Text = "DNS prefere :";
             // 
-            // getwayTextBox
-            // 
-            this.getwayTextBox.AccessibleRole = System.Windows.Forms.AccessibleRole.Text;
-            this.getwayTextBox.AutoSize = true;
-            this.getwayTextBox.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.getwayTextBox.BackColor = System.Drawing.SystemColors.Window;
-            this.getwayTextBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.getwayTextBox.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.getwayTextBox.IPAddress = ((System.Net.IPAddress)(resources.GetObject("getwayTextBox.IPAddress")));
-            this.getwayTextBox.Location = new System.Drawing.Point(222, 167);
-            this.getwayTextBox.Margin = new System.Windows.Forms.Padding(2);
-            this.getwayTextBox.Name = "getwayTextBox";
-            this.getwayTextBox.Size = new System.Drawing.Size(134, 19);
-            this.getwayTextBox.TabIndex = 29;
-            // 
             // GatewayLabel
             // 
             this.GatewayLabel.AutoSize = true;
@@ -459,21 +526,6 @@
             this.GatewayLabel.Size = new System.Drawing.Size(134, 14);
             this.GatewayLabel.TabIndex = 8;
             this.GatewayLabel.Text = "Passerelle Par default :";
-            // 
-            // dnsPrimTextBox
-            // 
-            this.dnsPrimTextBox.AccessibleRole = System.Windows.Forms.AccessibleRole.Text;
-            this.dnsPrimTextBox.AutoSize = true;
-            this.dnsPrimTextBox.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.dnsPrimTextBox.BackColor = System.Drawing.SystemColors.Window;
-            this.dnsPrimTextBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dnsPrimTextBox.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dnsPrimTextBox.IPAddress = ((System.Net.IPAddress)(resources.GetObject("dnsPrimTextBox.IPAddress")));
-            this.dnsPrimTextBox.Location = new System.Drawing.Point(222, 249);
-            this.dnsPrimTextBox.Margin = new System.Windows.Forms.Padding(2);
-            this.dnsPrimTextBox.Name = "dnsPrimTextBox";
-            this.dnsPrimTextBox.Size = new System.Drawing.Size(134, 19);
-            this.dnsPrimTextBox.TabIndex = 30;
             // 
             // MaskLabel
             // 
@@ -485,21 +537,6 @@
             this.MaskLabel.TabIndex = 6;
             this.MaskLabel.Text = "Masque de sous-Reseau :";
             // 
-            // dnsSecTextBox
-            // 
-            this.dnsSecTextBox.AccessibleRole = System.Windows.Forms.AccessibleRole.Text;
-            this.dnsSecTextBox.AutoSize = true;
-            this.dnsSecTextBox.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.dnsSecTextBox.BackColor = System.Drawing.SystemColors.Window;
-            this.dnsSecTextBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dnsSecTextBox.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dnsSecTextBox.IPAddress = ((System.Net.IPAddress)(resources.GetObject("dnsSecTextBox.IPAddress")));
-            this.dnsSecTextBox.Location = new System.Drawing.Point(222, 289);
-            this.dnsSecTextBox.Margin = new System.Windows.Forms.Padding(2);
-            this.dnsSecTextBox.Name = "dnsSecTextBox";
-            this.dnsSecTextBox.Size = new System.Drawing.Size(134, 19);
-            this.dnsSecTextBox.TabIndex = 31;
-            // 
             // AdressIpLabel
             // 
             this.AdressIpLabel.AutoSize = true;
@@ -509,6 +546,24 @@
             this.AdressIpLabel.Size = new System.Drawing.Size(70, 14);
             this.AdressIpLabel.TabIndex = 4;
             this.AdressIpLabel.Text = "Adresse IP :";
+            // 
+            // comboBoxInterface
+            // 
+            this.comboBoxInterface.FormattingEnabled = true;
+            this.comboBoxInterface.Location = new System.Drawing.Point(244, 143);
+            this.comboBoxInterface.Name = "comboBoxInterface";
+            this.comboBoxInterface.Size = new System.Drawing.Size(157, 22);
+            this.comboBoxInterface.TabIndex = 6;
+            // 
+            // InterfaceLabel
+            // 
+            this.InterfaceLabel.AutoSize = true;
+            this.InterfaceLabel.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.InterfaceLabel.Location = new System.Drawing.Point(38, 143);
+            this.InterfaceLabel.Name = "InterfaceLabel";
+            this.InterfaceLabel.Size = new System.Drawing.Size(71, 18);
+            this.InterfaceLabel.TabIndex = 36;
+            this.InterfaceLabel.Text = "Interface :";
             // 
             // tabControlIp
             // 
@@ -536,7 +591,6 @@
             this.ClientSize = new System.Drawing.Size(422, 685);
             this.Controls.Add(this.comboBoxInterface);
             this.Controls.Add(this.DesciptionRenamelabel);
-            this.Controls.Add(this.nameComputerLabel);
             this.Controls.Add(this.InterfaceLabel);
             this.Controls.Add(this.RenameTilteLabel);
             this.Controls.Add(this.renameLabel);
@@ -560,6 +614,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.imgValid)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.valideprinter)).EndInit();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.tabControlIp.ResumeLayout(false);
@@ -581,7 +636,6 @@
         private System.Windows.Forms.ComboBox comboBoxIpManuel;
         private System.Windows.Forms.Label RenameTilteLabel;
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.Label nameComputerLabel;
         private System.Windows.Forms.Button btnRestart;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Label label9;
@@ -593,15 +647,10 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.CheckBox checkBoxDns;
         private System.Windows.Forms.Label DesciptionParaIp;
-        public IPv4Address.IPv4AddressTextBox maskTextBox;
         private System.Windows.Forms.Label dnsSecLabel;
-        public IPv4Address.IPv4AddressTextBox ipAddressTextBox;
         private System.Windows.Forms.Label dnsPrimLabel;
-        public IPv4Address.IPv4AddressTextBox getwayTextBox;
         private System.Windows.Forms.Label GatewayLabel;
-        public IPv4Address.IPv4AddressTextBox dnsPrimTextBox;
         private System.Windows.Forms.Label MaskLabel;
-        public IPv4Address.IPv4AddressTextBox dnsSecTextBox;
         private System.Windows.Forms.Label AdressIpLabel;
         private System.Windows.Forms.TabControl tabControlIp;
         private System.Windows.Forms.ComboBox comboBoxInterface;
@@ -609,6 +658,20 @@
         private System.Windows.Forms.PictureBox imgValid;
         private System.Windows.Forms.Label DesciptionRenamelabel;
         private System.Windows.Forms.Button btnActiveWindows;
+        private System.Windows.Forms.ComboBox LstPrinterLocal;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label Imprimante;
+        private System.Windows.Forms.TextBox txtIpprinter;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.PictureBox valideprinter;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox ipAddressTextBox;
+        private System.Windows.Forms.TextBox dnsSecTextBox;
+        private System.Windows.Forms.TextBox dnsPrimTextBox;
+        private System.Windows.Forms.TextBox getwayTextBox;
+        private System.Windows.Forms.TextBox maskTextBox;
     }
 }
 

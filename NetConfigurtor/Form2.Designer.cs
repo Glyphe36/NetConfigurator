@@ -28,16 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
-            this.subnet_mask = new IPv4Address.IPv4AddressTextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.ip_address = new IPv4Address.IPv4AddressTextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.getway = new IPv4Address.IPv4AddressTextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.pri_Dns = new IPv4Address.IPv4AddressTextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.sec_Dns = new IPv4Address.IPv4AddressTextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
@@ -51,19 +45,6 @@
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // subnet_mask
-            // 
-            this.subnet_mask.AccessibleRole = System.Windows.Forms.AccessibleRole.Text;
-            this.subnet_mask.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.subnet_mask.BackColor = System.Drawing.SystemColors.Window;
-            this.subnet_mask.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.subnet_mask.IPAddress = ((System.Net.IPAddress)(resources.GetObject("subnet_mask.IPAddress")));
-            this.subnet_mask.Location = new System.Drawing.Point(254, 183);
-            this.subnet_mask.Margin = new System.Windows.Forms.Padding(2);
-            this.subnet_mask.Name = "subnet_mask";
-            this.subnet_mask.Size = new System.Drawing.Size(158, 22);
-            this.subnet_mask.TabIndex = 39;
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -73,19 +54,6 @@
             this.label7.Size = new System.Drawing.Size(91, 14);
             this.label7.TabIndex = 38;
             this.label7.Text = "DNS auxiliaire :";
-            // 
-            // ip_address
-            // 
-            this.ip_address.AccessibleRole = System.Windows.Forms.AccessibleRole.Text;
-            this.ip_address.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ip_address.BackColor = System.Drawing.SystemColors.Window;
-            this.ip_address.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ip_address.IPAddress = ((System.Net.IPAddress)(resources.GetObject("ip_address.IPAddress")));
-            this.ip_address.Location = new System.Drawing.Point(254, 144);
-            this.ip_address.Margin = new System.Windows.Forms.Padding(2);
-            this.ip_address.Name = "ip_address";
-            this.ip_address.Size = new System.Drawing.Size(158, 23);
-            this.ip_address.TabIndex = 40;
             // 
             // label6
             // 
@@ -97,19 +65,6 @@
             this.label6.TabIndex = 37;
             this.label6.Text = "DNS prefere :";
             // 
-            // getway
-            // 
-            this.getway.AccessibleRole = System.Windows.Forms.AccessibleRole.Text;
-            this.getway.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.getway.BackColor = System.Drawing.SystemColors.Window;
-            this.getway.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.getway.IPAddress = ((System.Net.IPAddress)(resources.GetObject("getway.IPAddress")));
-            this.getway.Location = new System.Drawing.Point(254, 222);
-            this.getway.Margin = new System.Windows.Forms.Padding(2);
-            this.getway.Name = "getway";
-            this.getway.Size = new System.Drawing.Size(158, 23);
-            this.getway.TabIndex = 41;
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -120,19 +75,6 @@
             this.label5.TabIndex = 36;
             this.label5.Text = "Passerelle Par default :";
             // 
-            // pri_Dns
-            // 
-            this.pri_Dns.AccessibleRole = System.Windows.Forms.AccessibleRole.Text;
-            this.pri_Dns.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.pri_Dns.BackColor = System.Drawing.SystemColors.Window;
-            this.pri_Dns.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pri_Dns.IPAddress = ((System.Net.IPAddress)(resources.GetObject("pri_Dns.IPAddress")));
-            this.pri_Dns.Location = new System.Drawing.Point(254, 264);
-            this.pri_Dns.Margin = new System.Windows.Forms.Padding(2);
-            this.pri_Dns.Name = "pri_Dns";
-            this.pri_Dns.Size = new System.Drawing.Size(158, 23);
-            this.pri_Dns.TabIndex = 42;
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -142,19 +84,6 @@
             this.label4.Size = new System.Drawing.Size(148, 14);
             this.label4.TabIndex = 35;
             this.label4.Text = "Masque de sous-Reseau :";
-            // 
-            // sec_Dns
-            // 
-            this.sec_Dns.AccessibleRole = System.Windows.Forms.AccessibleRole.Text;
-            this.sec_Dns.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.sec_Dns.BackColor = System.Drawing.SystemColors.Window;
-            this.sec_Dns.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sec_Dns.IPAddress = ((System.Net.IPAddress)(resources.GetObject("sec_Dns.IPAddress")));
-            this.sec_Dns.Location = new System.Drawing.Point(254, 304);
-            this.sec_Dns.Margin = new System.Windows.Forms.Padding(2);
-            this.sec_Dns.Name = "sec_Dns";
-            this.sec_Dns.Size = new System.Drawing.Size(158, 23);
-            this.sec_Dns.TabIndex = 43;
             // 
             // label3
             // 
@@ -261,15 +190,10 @@
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.subnet_mask);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.ip_address);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.getway);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.pri_Dns);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.sec_Dns);
             this.Controls.Add(this.label3);
             this.Name = "Form2";
             this.Load += new System.EventHandler(this.Form2_Load);
@@ -282,15 +206,10 @@
         }
 
         #endregion
-        private IPv4Address.IPv4AddressTextBox subnet_mask;
         private System.Windows.Forms.Label label7;
-        public IPv4Address.IPv4AddressTextBox ip_address;
         private System.Windows.Forms.Label label6;
-        private IPv4Address.IPv4AddressTextBox getway;
         private System.Windows.Forms.Label label5;
-        private IPv4Address.IPv4AddressTextBox pri_Dns;
         private System.Windows.Forms.Label label4;
-        private IPv4Address.IPv4AddressTextBox sec_Dns;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label2;
