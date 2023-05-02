@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Collections.Specialized;
 using System.IO;
 using System.Linq;
 using System.Management;
@@ -8,25 +10,76 @@ using System.Net;
 using System.Net.NetworkInformation;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using static System.Windows.Forms.AxHost;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
+using System.Xml;
+using System.Xml.Linq;
+using System.Xml.Serialization;
 
 namespace NetConfigurtor
 {
+    
 
     public partial class Form1 : Form
     {
         string Dns0 = "";
         string Dns1 = "1.1.1.1";
         string Dns8 = "8.8.8.8";
-       
-        
+        public class NetworkConfig
+        {
+            [XmlElement("Location")]
+            public List<LocationConfig> Locations { get; set; }
+        }
+
+        public class LocationConfig
+        {
+            [XmlAttribute("Name")]
+            public string Name { get; set; }
+
+            [XmlElement("IPAddress")]
+            public string IPAddress { get; set; }
+
+            [XmlElement("SubnetMask")]
+            public string SubnetMask { get; set; }
+
+            [XmlElement("Gateway")]
+            public string Gateway { get; set; }
+
+            [XmlElement("UseDNS")]
+            public bool UseDNS { get; set; }
+
+            [XmlElement("PrimaryDNS")]
+            public string PrimaryDNS { get; set; }
+
+            [XmlElement("SecondaryDNS")]
+            public string SecondaryDNS { get; set; }
+        }
+
 
         public Form1()
         {
+            if (File.Exists("config.xml"))
+            { 
+                // Le fichier existe, ne pas toucher à la configuration
+            }
+            else { 
+                // Créer les objets de configuration
+                var networkConfig = new NetworkConfig();
+                networkConfig.Locations = new List<LocationConfig>
+                {
+                    new LocationConfig { Name = "Desk", IPAddress = "10.123.10.1", SubnetMask = "255.255.0.0" },
+                    new LocationConfig { Name = "Preview", IPAddress = "10.123.20.1", SubnetMask = "255.255.0.0" },
+                    new LocationConfig { Name = "Room", IPAddress = "10.123.30.1", SubnetMask = "255.255.0.0" },
+                    new LocationConfig { Name = "Display", IPAddress = "10.123.40.1", SubnetMask = "255.255.0.0" },
+                    new LocationConfig { Name = "Accre", IPAddress = "172.20.10.1", SubnetMask = "255.255.0.0", Gateway = "172.20.0.254", UseDNS = true, PrimaryDNS = "8.8.8.8", SecondaryDNS = "1.1.1.1" },
+                };
+
+                // Sérialiser les objets en XML et écrire le fichier
+                XmlSerializer serializer = new XmlSerializer(typeof(NetworkConfig));
+                using (StreamWriter streamWriter = new StreamWriter("config.xml"))
+                {
+                    serializer.Serialize(streamWriter, networkConfig);
+                }
+            }
             InitializeComponent();
-            radioButtonIpAuto.Checked = true;
             checkBoxDns.Checked = false;
             renameTextBox.Text = Environment.MachineName;
 
@@ -118,7 +171,6 @@ namespace NetConfigurtor
             CreateParams cp = base.CreateParams;
             cp.ClassName = "SysIPAddress32";
             IPGlobalProperties ipProperties = IPGlobalProperties.GetIPGlobalProperties();
-            radioButtonIpAuto.Checked=true;
             imgValid.Visible= false;
             //comboBoxInterface.SelectedIndex = 0;
             checkBoxDns.Checked= false;
@@ -131,58 +183,43 @@ namespace NetConfigurtor
 
             //verifie si l'interface active est en dhcp et check ou non le bon radiobuttin
             var host = Dns.GetHostEntry(Dns.GetHostName());
-            foreach (var ip in host.AddressList)
+            // Récupérer l'interface réseau active
+            NetworkInterface activeInterface = NetworkInterface.GetAllNetworkInterfaces().FirstOrDefault(ni => ni.OperationalStatus == OperationalStatus.Up);
+
+            if (activeInterface != null)
             {
-                if (ip.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
-                {
-                    NetworkInterface[] interfaces = NetworkInterface.GetAllNetworkInterfaces();
-                    foreach (NetworkInterface ni in interfaces)
-                    {
-                        var adapter = ni.GetIPProperties().UnicastAddresses.FirstOrDefault(a => a.Address.Equals(ip));
-                        if (adapter != null)
-                        {
-                            Console.WriteLine("The IP address is configured with " + adapter.DuplicateAddressDetectionState + " configuration.");
-                            if (ni.GetIPProperties().GetIPv4Properties().IsDhcpEnabled)
-                            {
-                                Console.WriteLine("The IP address is configured with DHCP.");
-                                // Code pour sélectionner votre bouton radio
-                                radioButtonIpAuto.Checked=true;
-                                radioButtonIpManuel.Checked=false;
+                // Récupérer l'état DHCP de l'interface
+                IPInterfaceProperties properties = activeInterface.GetIPProperties();
+                bool isDhcpEnabled = properties.GetIPv4Properties().IsDhcpEnabled;
+                radioButtonIpAuto.Checked = true;
+                radioButtonIpManuel.Checked = false;
 
-                                ipAuto.Enabled = true;
-                                masque.Enabled = true;
-                                label12.Enabled = true;
+                ipAuto.Enabled = true;
+                masque.Enabled = true;
+                label12.Enabled = true;
 
-                                comboBoxIpManuel.Enabled = false;
-                                ipAddressTextBox.Enabled = false;
-                                maskTextBox.Enabled = false;
-                                getwayTextBox.Enabled = false;
-                                dnsPrimTextBox.Enabled = false;
-                                dnsSecTextBox.Enabled = false;
+                comboBoxIpManuel.Enabled = false;
+                ipAddressTextBox.Enabled = false;
+                maskTextBox.Enabled = false;
+                getwayTextBox.Enabled = false;
+                dnsPrimTextBox.Enabled = false;
+                dnsSecTextBox.Enabled = false;
+                // Afficher l'état DHCP dans une boîte de dialogue
+                //MessageBox.Show("DHCP est " + (isDhcpEnabled ? "activé" : "désactivé"));
+            }
+            else
+            {
+                Console.WriteLine("The IP address is not configured with DHCP.");
+                // Code pour ne pas sélectionner votre bouton radio
+                radioButtonIpManuel.Checked = true;
+                radioButtonIpAuto.Checked = false;
 
-
-                            }
-                            else
-                            {
-                                Console.WriteLine("The IP address is not configured with DHCP.");
-                                // Code pour ne pas sélectionner votre bouton radio
-                                radioButtonIpManuel.Checked=true;
-                                radioButtonIpAuto.Checked=false;
-
-                                comboBoxIpManuel.Enabled = true;
-                                ipAddressTextBox.Enabled = true;
-                                maskTextBox.Enabled = true;
-                                getwayTextBox.Enabled = true;
-                                dnsPrimTextBox.Enabled = true;
-                                dnsSecTextBox.Enabled = true;
-
-                            }
-
-                            // On peut sortir de la boucle car on a trouvé l'interface active
-                            break;
-                        }
-                    }
-                }
+                comboBoxIpManuel.Enabled = true;
+                ipAddressTextBox.Enabled = true;
+                maskTextBox.Enabled = true;
+                getwayTextBox.Enabled = true;
+                dnsPrimTextBox.Enabled = true;
+                dnsSecTextBox.Enabled = true;
             }
         }
 
@@ -212,8 +249,10 @@ namespace NetConfigurtor
         private void button1_Click(object sender, EventArgs e)
         {
             string interfacebox = comboBoxInterface.SelectedItem.ToString();
-            imgValid.Visible= true;
+            // Afficher l'image en rendant le contrôle PictureBox visible
+            imgValid.Visible = true;
 
+            
             if (radioButtonIpAuto.Checked == true)
             {
                 SetCMD("/c netsh interface ipv4 set address \"" + interfacebox + "\" dhcp");
@@ -244,6 +283,12 @@ namespace NetConfigurtor
                 }
 
             }
+
+            // Attendre deux secondes
+            System.Threading.Thread.Sleep(2000);
+
+            // Rendre le contrôle PictureBox invisible
+            imgValid.Visible = false;
 
         }
 
@@ -284,44 +329,85 @@ namespace NetConfigurtor
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            // Charger le fichier XML
+            XmlDocument doc = new XmlDocument();
+            doc.Load("config.xml");
+
+
 
             if (comboBoxIpManuel.SelectedItem.ToString() == "Desk")
             {
-                ipAddressTextBox.Text = "10.123.10.1";
-                maskTextBox.Text = "255.255.0.0";
+                // Rechercher l'élément "IPAddress" sous "Location" avec l'attribut "Name" égal à "Desk"
+                XmlNode ipAddressNode = doc.SelectSingleNode("/NetworkConfig/Location[@Name='Desk']/IPAddress");
+                XmlNode MaskNode = doc.SelectSingleNode("/NetworkConfig/Location[@Name='Accre']/SubnetMask");
+
+                // Afficher la valeur de l'élément "IPAddress"
+                //MessageBox.Show(ipAddressNode.InnerText);
+
+                ipAddressTextBox.Text = ipAddressNode.InnerText;
+                maskTextBox.Text = MaskNode.InnerText;
                 getwayTextBox.Text = "";
                 checkBoxDns.Checked = false;
             }
 
             if (comboBoxIpManuel.SelectedItem.ToString() == "Preview")
             {
-                ipAddressTextBox.Text = "10.123.20.1";
-                maskTextBox.Text = "255.255.0.0";
+                // Rechercher l'élément "IPAddress" sous "Location" avec l'attribut "Name" égal à "Desk"
+                XmlNode ipAddressNode = doc.SelectSingleNode("/NetworkConfig/Location[@Name='Preview']/IPAddress");
+                XmlNode MaskNode = doc.SelectSingleNode("/NetworkConfig/Location[@Name='Accre']/SubnetMask");
+
+                // Afficher la valeur de l'élément "IPAddress"
+                //MessageBox.Show(ipAddressNode.InnerText);
+
+                ipAddressTextBox.Text = ipAddressNode.InnerText;
+                maskTextBox.Text = MaskNode.InnerText;
                 getwayTextBox.Text = "";
                 checkBoxDns.Checked = false;
             }
 
             if (comboBoxIpManuel.SelectedItem.ToString() == "Room")
             {
-                ipAddressTextBox.Text = "10.123.30.1";
-                maskTextBox.Text = "255.255.0.0";
+                // Rechercher l'élément "IPAddress" sous "Location" avec l'attribut "Name" égal à "Desk"
+                XmlNode ipAddressNode = doc.SelectSingleNode("/NetworkConfig/Location[@Name='Room']/IPAddress");
+                XmlNode MaskNode = doc.SelectSingleNode("/NetworkConfig/Location[@Name='Accre']/SubnetMask");
+
+                // Afficher la valeur de l'élément "IPAddress"
+                //MessageBox.Show(ipAddressNode.InnerText);
+
+                ipAddressTextBox.Text = ipAddressNode.InnerText;
+                maskTextBox.Text = MaskNode.InnerText;
                 getwayTextBox.Text = "";
                 checkBoxDns.Checked = false;
             }
 
             if (comboBoxIpManuel.SelectedItem.ToString() == "Display")
             {
-                ipAddressTextBox.Text = "10.123.40.1";
-                maskTextBox.Text = "255.255.0.0";
+                // Rechercher l'élément "IPAddress" sous "Location" avec l'attribut "Name" égal à "Desk"
+                XmlNode ipAddressNode = doc.SelectSingleNode("/NetworkConfig/Location[@Name='Display']/IPAddress");
+                XmlNode MaskNode = doc.SelectSingleNode("/NetworkConfig/Location[@Name='Accre']/SubnetMask");
+
+                // Afficher la valeur de l'élément "IPAddress"
+                //MessageBox.Show(ipAddressNode.InnerText);
+
+                ipAddressTextBox.Text = ipAddressNode.InnerText;
+                maskTextBox.Text = MaskNode.InnerText;
                 getwayTextBox.Text = "";
                 checkBoxDns.Checked = false;
             }
 
             if (comboBoxIpManuel.SelectedItem.ToString() == "Accre")
             {
-                ipAddressTextBox.Text = "172.20.10.1";
-                maskTextBox.Text = "255.255.0.0";
-                getwayTextBox.Text = "172.20.0.254";
+                // Rechercher l'élément "IPAddress" sous "Location" avec l'attribut "Name" égal à "Desk"
+                XmlNode ipAddressNode = doc.SelectSingleNode("/NetworkConfig/Location[@Name='Accre']/IPAddress");
+                XmlNode MaskNode = doc.SelectSingleNode("/NetworkConfig/Location[@Name='Accre']/SubnetMask");
+                XmlNode GatewayNode = doc.SelectSingleNode("/NetworkConfig/Location[@Name='Accre']/Gateway");
+
+                // Afficher la valeur de l'élément "IPAddress"
+                //MessageBox.Show(ipAddressNode.InnerText);
+
+                ipAddressTextBox.Text = ipAddressNode.InnerText;
+                maskTextBox.Text = MaskNode.InnerText;
+                getwayTextBox.Text = GatewayNode.InnerText;
                 checkBoxDns.Checked = true;
                 dnsPrimTextBox.Text = "8.8.8.8";
                 dnsSecTextBox.Text = "1.1.1.1";
@@ -422,6 +508,11 @@ namespace NetConfigurtor
             {
                 errorProvider1.SetError(ipAddressTextBox, "");
             }
+        }
+
+        private void imgValid_Click(object sender, EventArgs e)
+        {
+
         }
     }
 

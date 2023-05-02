@@ -189,6 +189,7 @@
             this.imgValid.Size = new System.Drawing.Size(36, 36);
             this.imgValid.TabIndex = 35;
             this.imgValid.TabStop = false;
+            this.imgValid.Click += new System.EventHandler(this.imgValid_Click);
             // 
             // btnRestart
             // 
@@ -206,20 +207,18 @@
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(81, 25);
             this.btnCancel.TabIndex = 16;
-            this.btnCancel.Text = "Annuler";
+            this.btnCancel.Text = "Fermer";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.button2_Click);
             // 
             // radioButtonIpAuto
             // 
             this.radioButtonIpAuto.AutoSize = true;
-            this.radioButtonIpAuto.Checked = true;
             this.radioButtonIpAuto.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButtonIpAuto.Location = new System.Drawing.Point(22, 85);
             this.radioButtonIpAuto.Name = "radioButtonIpAuto";
             this.radioButtonIpAuto.Size = new System.Drawing.Size(130, 22);
             this.radioButtonIpAuto.TabIndex = 3;
-            this.radioButtonIpAuto.TabStop = true;
             this.radioButtonIpAuto.Text = "Ip Automatique :";
             this.radioButtonIpAuto.UseVisualStyleBackColor = true;
             this.radioButtonIpAuto.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
